@@ -29,7 +29,7 @@ function increaseScore(team) {
     const scoreBElement = document.querySelector('#scoreB span');
 
     //add functionality for sideout and rally scoring
-    if (strScoreType == 'sideout') {
+    if (strScoreType == 'Sideout') {
         /* sideout scoring */
         if (team === 'A') {
             if (servingTeam == teamA_serve) {
@@ -47,7 +47,7 @@ function increaseScore(team) {
             }
         }
         
-    } else if (strScoreType == 'rally') {
+    } else if (strScoreType == 'Rally') {
         /* rally scoring */
         if (team === 'A') {
             scoreA++;
