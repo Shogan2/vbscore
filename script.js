@@ -47,7 +47,7 @@ function increaseScore(team) {
             }
         }
         
-    } else if (strScoreType == 'r  ally') {
+    } else if (strScoreType == 'rally') {
         /* rally scoring */
         if (team === 'A') {
             scoreA++;
