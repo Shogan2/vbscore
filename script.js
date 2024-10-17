@@ -2,9 +2,12 @@
 
 let scoreA = 0;
 let scoreB = 0;
+const teamA_serve = 1;
+const teamB_serve = 2;
+let servingTeam = 0;
 let teamAName = "Team 1";
 let teamBName = "Team 2";
-let servingTeam = null; /* 'A';   null for now and assumes we don't know who is serving */
+//let servingTeam = null; /* 'A';   null for now and assumes we don't know who is serving */
 let strScoreType = document.getElementById('scoringType').value;
 
 function updateTeamNames() {
@@ -28,26 +31,47 @@ function increaseScore(team) {
     //add functionality for sideout and rally scoring
     if (strScoreType == 'sideout') {
         /* sideout scoring */
-
-    } else {
+        if (team === 'A') {
+            if (servingTeam == teamA_serve) {
+                scoreA++;
+                scoreAElement.innerText = scoreA;
+            } else {
+                servingTeam = teamA_serve;
+            }
+        } else if (team === 'B') {
+            if (servingTeam == teamB_serve) {
+                scoreB++;
+                scoreBElement.innerText = scoreB;
+            } else {
+                servingTeam = teamB_serve;
+            }
+        }
+        
+    } else if (strScoreType == 'rally') {
         /* rally scoring */
-
+        if (team === 'A') {
+            scoreA++;
+            scoreAElement.innerText = scoreA;
+        } else if (team === 'B') {
+            scoreB++;
+            scoreBElement.innerText = scoreB;
+        }
     }
-
-    if (team === 'A') {
-        scoreA++;
-        scoreAElement.innerText = scoreA;
+    
+    //if (team === 'A') {
+    //    scoreA++;
+    //    scoreAElement.innerText = scoreA;
         //scoreAElement.style.border = '5px solid black';
         //scoreBElement.style.border = 'none';
-        servingTeam = 'A'; /* used for sideout */
-    } else if (team === 'B') {
-        scoreB++;
-        scoreBElement.innerText = scoreB;
+    //    servingTeam = 'A'; /* used for sideout */
+    //} else if (team === 'B') {
+    //    scoreB++;
+    //    scoreBElement.innerText = scoreB;
         //scoreBElement.style.border = '5px solid black';
         //scoreAElement.style.border = 'none';
-        servingTeam = 'B'; /* used for sideout */
-    }
-    //console.log(servingTeam);
+    //    servingTeam = 'B'; /* used for sideout */
+    //}
+    //console.log(servingTeam); 
 
 }
 
